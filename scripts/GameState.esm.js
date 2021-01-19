@@ -14,6 +14,8 @@ export class GameState {
             ({ x, y, row, column, kind }) =>
                 new Diamond(x, y, row, column, kind, diamondsSpriteImage)
         );
+        let _isSwaping = false;
+        let _isMoving = false;
         this._pointsToWin = pointsToWin;
         this._level = level;
 
@@ -22,6 +24,10 @@ export class GameState {
         this.increasePointsMovement = () => _letfMovement++;
         this.getPlayerPoints = () => _playerScores;
         this.increasePlayerPoints = (points) => (_playerScores += points);
+        this.getIsSwaping = () => _isSwaping;
+        this.setIsSwaping = (value) => (_isSwaping = value);
+        this.getIsMoving = () => _isMoving;
+        this.setIsMoving = (value) => (_isMoving = value);
 
         this.isPlayerWinner = () => _playerScores >= this._pointsToWin;
         this.getGameBoard = () => _gameBoard;
