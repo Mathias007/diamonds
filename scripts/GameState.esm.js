@@ -8,7 +8,7 @@ export class GameState {
         diamonds,
         diamondsSpriteImage
     ) {
-        let _letfMovement = leftMovement;
+        let _leftMovement = leftMovement;
         let _playerScores = 0;
         let _gameBoard = diamonds.map(
             ({ x, y, row, column, kind }) =>
@@ -19,9 +19,9 @@ export class GameState {
         this._pointsToWin = pointsToWin;
         this._level = level;
 
-        this.getLeftMovement = () => _letfMovement;
-        this.decreasePointsMovement = () => _letfMovement--;
-        this.increasePointsMovement = () => _letfMovement++;
+        this.getLeftMovement = () => _leftMovement;
+        this.decreasePointsMovement = () => _leftMovement--;
+        this.increasePointsMovement = () => _leftMovement++;
         this.getPlayerPoints = () => _playerScores;
         this.increasePlayerPoints = (points) => (_playerScores += points);
         this.getIsSwaping = () => _isSwaping;
