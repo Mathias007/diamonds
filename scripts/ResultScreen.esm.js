@@ -1,4 +1,6 @@
-import { Common, VISIBLE_SCREEN } from "./Common.esm.js";
+import { Common, HIDDEN_SCREEN, VISIBLE_SCREEN } from "./Common.esm.js";
+import { canvas } from "./Canvas.esm.js";
+import { mainMenu } from "./MainMenu.esm.js";
 
 const RESULT_SCREEN_GAME_WIN_CLASS = "end-screen--is-win";
 const RESULT_SCREEN_END_SCREEN_ID = "js-end-screen";
@@ -31,8 +33,9 @@ class ResultScreen extends Common {
         );
 
         backButtonElement.addEventListener("click", () =>
-            console.log("click-back")
+            this.backButtonClick()
         );
+
         restartButtonElement.addEventListener("click", () =>
             console.log("click-restart")
         );
@@ -51,6 +54,12 @@ class ResultScreen extends Common {
             : "PRZEGRAŁEŚ";
         this.userPointsElement.textContent = String(playerPoints);
         this.highScoresElement.textContent = 7000;
+    }
+
+    backButtonClick() {
+        this.changeVisibilityScreen(canvas.element, HIDDEN_SCREEN);
+        this.changeVisibilityScreen(this.element, HIDDEN_SCREEN);
+        mainMenu.showLevelScreen();
     }
 }
 
