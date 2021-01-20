@@ -11,6 +11,7 @@ import { media } from "./Media.esm.js";
 import { GameState } from "./GameState.esm.js";
 import { mouseController } from "./MouseController.esm.js";
 import { DIAMOND_SIZE, NUMBER_OF_DIAMONDS_TYPES } from "./Diamond.esm.js";
+import { resultScreen } from "./ResultScreen.esm.js";
 
 const DIAMONDS_ARRAY_WIDTH = 8;
 const DIAMONDS_ARRAY_HEIGHT = DIAMONDS_ARRAY_WIDTH + 1; // with invisible first line
@@ -245,7 +246,9 @@ class Game extends Common {
 				console.log('Kolejny level odblokowany');
 			}
 
-			console.log('gracz ma więcej punktów => aktualizacja high scores')
+			console.log('gracz ma więcej punktów => aktualizacja high scores');
+
+			resultScreen.viewResultScreen(isPlayerWinner, this.gameState.getPlayerPoints(), this.gameState.level);
 
 		} else {
 			this.animationFrame = window.requestAnimationFrame(() => this.animate());
