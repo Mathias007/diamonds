@@ -2,6 +2,8 @@ import { Common, HIDDEN_SCREEN, VISIBLE_SCREEN } from "./Common.esm.js";
 import { canvas } from "./Canvas.esm.js";
 import { mainMenu } from "./MainMenu.esm.js";
 import { userData } from "./UserData.esm.js";
+import { levelSelect } from "./LevelSelect.esm.js";
+import { game } from "./Game.esm.js";
 
 const RESULT_SCREEN_GAME_WIN_CLASS = "end-screen--is-win";
 const RESULT_SCREEN_END_SCREEN_ID = "js-end-screen";
@@ -38,7 +40,7 @@ class ResultScreen extends Common {
         );
 
         restartButtonElement.addEventListener("click", () =>
-            console.log("click-restart")
+            this.restartLevelClick()
         );
     }
 
@@ -63,6 +65,11 @@ class ResultScreen extends Common {
         this.changeVisibilityScreen(canvas.element, HIDDEN_SCREEN);
         this.changeVisibilityScreen(this.element, HIDDEN_SCREEN);
         mainMenu.showLevelScreen();
+    }
+
+    restartLevelClick() {
+        this.changeVisibilityScreen(this.element, HIDDEN_SCREEN);
+        levelSelect.loadLevel(game.gameState.level);
     }
 }
 
