@@ -13,6 +13,7 @@ import { mouseController } from "./MouseController.esm.js";
 import { DIAMOND_SIZE, NUMBER_OF_DIAMONDS_TYPES } from "./Diamond.esm.js";
 import { resultScreen } from "./ResultScreen.esm.js";
 import { userData } from "./UserData.esm.js";
+import { mainMenu } from "./MainMenu.esm.js";
 
 export const DIAMONDS_ARRAY_WIDTH = 8;
 const DIAMONDS_ARRAY_HEIGHT = DIAMONDS_ARRAY_WIDTH + 1; // with invisible first line
@@ -37,6 +38,7 @@ class Game extends Common {
             media.diamondsSprite
         );
 		this.changeVisibilityScreen(canvas.element, VISIBLE_SCREEN);
+		this.changeVisibilityScreen(mainMenu.miniSettingsLayer, VISIBLE_SCREEN);
 		media.isInLevel = true;
 		media.playBackgroundMusic();
         this.animate();
