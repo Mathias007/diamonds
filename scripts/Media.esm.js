@@ -7,7 +7,7 @@ class Media {
         this.allowedMusic = true;
         this.allowedSound = true;
         this._swapSound = null;
-        this._backgoundMusic = null;
+        this._backgroundMusic = null;
         this.isInLevel = false;
     }
 
@@ -17,7 +17,9 @@ class Media {
             this.musicVolume = 1;
         }
 
-        this._backgoundMusic.volume = this.musicVolume;
+        if (this._backgroundMusic) {
+            this._backgroundMusic.volume = this.musicVolume;
+        }
     }
 
     decreaseMusicVolume() {
@@ -26,7 +28,9 @@ class Media {
             this.musicVolume = 0;
         }
 
-        this._backgoundMusic = this.musicVolume;
+        if (this._backgroundMusic) {
+            this._backgroundMusic.volume = this.musicVolume;
+        }
     }
 
     increaseSoundVolume() {
@@ -35,7 +39,9 @@ class Media {
             this.soundVolume = 1;
         }
 
-        this._swapSound.volume = this.soundVolume;
+        if (this._swapSound) {
+            this._swapSound.volume = this.soundVolume;
+        }
     }
 
     decreaseSoundVolume() {
@@ -44,20 +50,24 @@ class Media {
             this.soundVolume = 0;
         }
 
-        this._swapSound.volume = this.soundVolume;
+        if (this._swapSound) {
+            this._swapSound.volume = this.soundVolume;
+        }
     }
 
     playBackgroundMusic() {
-        if (!this.allowedMusic) {
+        if (!this.allowedMusic || !this._backgroundMusic) {
             return;
         }
 
-        this._backgoundMusic.loop = true;
-        this._backgoundMusic.play();
+        this._backgroundMusic.loop = true;
+        this._backgroundMusic.play();
     }
 
     stopBackgroundMusic() {
-        this._backgoundMusic.pause();
+        if (this._backgroundMusic) {
+            this._backgroundMusic.pause();
+        }
     }
 
     playSwapSound() {
@@ -73,23 +83,24 @@ class Media {
         this._swapSound.volume = this.soundVolume;
     }
 
-    set backgoundMusic(music) {
-        this._backgoundMusic = music;
-        this._backgoundMusic.volume = this.musicVolume;
+    set backgroundMusic(music) {
+        this._backgroundMusic = music;
+        this._backgroundMusic.volume = this.musicVolume;
     }
 
     get swapSound() {
-        return !!this._swapSound;
+        return Boolean(this._swapSound);
     }
 
-    get backgoundMusic() {
-        return !!this._backgoundMusic;
+    get backgroundMusic() {
+        return !!this._backgroundMusic;
     }
 
     set backgroundImage(imageObject) {
         if (!imageObject instanceof Image) {
             return;
         }
+
         this._backgroundImage = imageObject;
     }
 
@@ -116,6 +127,14 @@ class Media {
         } else {
             this.allowedMusic = true;
             this.playBackgroundMusic();
+        }
+    }
+
+    toggleSoundOnOff() {
+        if (this.allowedSound) {
+            this.allowedSound = false;
+        } else {
+            this.allowedSound = true;
         }
     }
 }
