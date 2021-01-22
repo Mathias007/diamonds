@@ -52,9 +52,7 @@ class LevelSelect extends Common {
             media.backgoundMusic &&
             media.swapSound
         ) {
-            window.addEventListener(DATALOADED_EVENT_NAME, () =>
-                game.playLevel(level)
-            );
+            game.playLevel(level);
             return;
         }
 

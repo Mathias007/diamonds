@@ -423,6 +423,9 @@ class Game extends Common {
 
 	checkEndOfGame() {
 		if (!this.gameState.getLeftMovement() && !this.gameState.getIsMoving() && !this.gameState.getIsSwaping()) {
+			media.isInLevel = false;
+			media.stopBackgroundMusic();
+
 			const isPlayerWinner = this.gameState.isPlayerWinner();
 			const currentLevel = Number(this.gameState.level);
 
