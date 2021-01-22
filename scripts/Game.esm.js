@@ -36,7 +36,9 @@ class Game extends Common {
             board,
             media.diamondsSprite
         );
-        this.changeVisibilityScreen(canvas.element, VISIBLE_SCREEN);
+		this.changeVisibilityScreen(canvas.element, VISIBLE_SCREEN);
+		media.isInLevel = true;
+		media.playBackgroundMusic();
         this.animate();
     }
 
@@ -101,6 +103,7 @@ class Game extends Common {
 
 			this.swapDiamonds();
 
+			media.playSwapSound();
 			this.gameState.setIsSwaping(true);
 			this.gameState.decreasePointsMovement();
 			mouseController.state = 0;
