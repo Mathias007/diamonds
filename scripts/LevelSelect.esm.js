@@ -83,7 +83,7 @@ class LevelSelect extends Common {
         window.addEventListener(DATALOADED_EVENT_NAME, () =>
             game.playLevel(level)
         );
-        return;
+        // return;
     }
 }
 
