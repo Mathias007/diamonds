@@ -49,7 +49,7 @@ class LevelSelect extends Common {
         if (
             media.backgroundImage &&
             media.diamondsSprite &&
-            media.backgoundMusic &&
+            media.backgroundMusic &&
             media.swapSound
         ) {
             game.playLevel(level);
@@ -74,8 +74,8 @@ class LevelSelect extends Common {
             );
         }
 
-        if (!media.backgoundMusic) {
-            media.backgoundMusic = loader.loadSound(
+        if (!media.backgroundMusic) {
+            media.backgroundMusic = loader.loadSound(
                 "sounds/music-background.mp3"
             );
         }
